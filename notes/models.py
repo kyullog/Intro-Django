@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from uuid import uuid4
 
 # Create your models here.
@@ -11,4 +12,5 @@ class Note(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 
-
+class PersonalNote(Note):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
